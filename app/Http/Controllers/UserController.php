@@ -8,15 +8,42 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index(){
+            $user=User::all('id','name','email','role_id');
+            return $user;
+    }
 
-            /*$user = new User();
-            $user->name='prakash';
-            $user->email="xyz@geekyants.com";
-            $user->password=bcrypt("random");
-            $user->role_id=2;
+    public function update(Request $request, $id)
+    {
+        $user=User::findOrFail($id);
 
-            $user->save();*/
+        if($user) { $user->update($request->all());}
 
-            return view('home');
+        else return response()->json(error);
+
+        return response()->json([
+            'message' => 'User updated successfully'
+        ], 201);
+    }
+
+    public function destroy($id){
+
+        $user=User::findOrFail($id);
+
+        if($user) $user->delete();
+        
+        else return response()->json(error);
+
+        return response()->json([
+            'message' => 'User deleted successfully'
+        ], 201);
+    }
+
+    public function show($id){
+        $user = User::find($id);
+        $role =  User::find($id)->role;
+        return response()->json([
+            'details' => $user,
+            'role' => $role
+        ], 201);
     }
 }

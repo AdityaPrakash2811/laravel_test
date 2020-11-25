@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;    //------------JWT--------------------
 use App\Http\Controllers\AuthController;    //--------JWT------------
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/home', 'App\Http\Controllers\UserController@index');
+
+
 
 
 

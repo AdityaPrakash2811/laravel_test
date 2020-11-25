@@ -32,3 +32,10 @@ Route::group([
     Route::post('/refresh',  'App\Http\Controllers\AuthController@refresh');
     Route::get('/user-profile', 'App\Http\Controllers\AuthController@userProfile');    
 });
+
+Route::group([
+    'middleware' => 'api'
+
+], function ($router) {
+    Route::resource('users', 'App\Http\Controllers\UserController'); 
+});

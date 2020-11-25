@@ -52,4 +52,9 @@ class User extends Authenticatable implements JWTSubject  //---implements for JW
     public function getJWTCustomClaims() {  //---------------JWT--------
         return [];
     }
+
+    public function role(){    //--------------------Elouquent rel.-----
+
+        return $this->hasOne('App\Models\Role','role_id','role_id');
+    }
 }
