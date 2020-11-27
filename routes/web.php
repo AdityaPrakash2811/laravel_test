@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;    //------------JWT--------------------
 use App\Http\Controllers\AuthController;    //--------JWT------------
 use App\Http\Controllers\UserController;
+use Illuminate\Http\UploadedFile;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/home',function(){
+    return view('home');
+});
+
+Route::post('/upload',function(Request $request){
+    $request->image->store('images','public');
+    return 'uploaded';
+});
+
+Route::post('/s3upload',function(Request $request){
+    $request->image->store('images','s3');
+    return 'uploaded';
+});
 
 
 

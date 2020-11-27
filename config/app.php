@@ -178,6 +178,9 @@ return [
 
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class, //-------------------------JWT-----------
 
+
+        //Dingo\Api\Provider\LaravelServiceProvider::class, //---------------------------Dingo------------
+
     ],
 
     /*

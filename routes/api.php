@@ -39,3 +39,16 @@ Route::group([
 ], function ($router) {
     Route::resource('users', 'App\Http\Controllers\UserController'); 
 });
+
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1', function ($api) {
+    /*$api->get('test', function () {
+        return 'It is ok';
+    });;*/
+
+    $api->group(['namespace' => 'App\Http\Controllers'], function ($api) {
+        $api->resource('users','UserController');
+    });
+});
+
+
